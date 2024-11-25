@@ -1,0 +1,59 @@
+<div class="portfolio-app">
+  <h1>Stock Portfolio Management</h1>
+
+  <!-- Form representing the input of data and the buttons to add/delete -->
+  <form>
+    <div>
+      <label for="stockSymbol">Enter Stock Symbol: </label>
+      <input
+        type="text"
+        id="stockSymbol"
+        [(ngModel)]="stockSymbol"
+        name="stockSymbol"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="stockQuantity">Select Quantity: </label>
+      <select id="stockQuantity" [(ngModel)]="stockQuantity" name="stockQuantity">
+        <option *ngFor="let quantity of quantities" [value]="quantity">{{ quantity }}</option>
+      </select>
+    </div>
+
+    <div>
+      <button type="button" class="action-button" (click)="addStock()">Add</button>
+      <button type="button" class="action-button" (click)="deleteStock()">Delete</button>
+    </div>
+  </form>
+
+
+  <!-- Display Message -->
+  <p>{{ message }}</p>
+
+  <!-- Portfolio table representing the database -->
+  <h2>Your Portfolio</h2>
+  <table class="portfolio-table" *ngIf="portfolio.length > 0; else noStocks">
+    <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Quantity</th>
+      <th>Purchase Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let stock of portfolio">
+      <td>{{ stock.stockSymbol }}</td>
+      <td>{{ stock.stockQuantity }}</td>
+      <td>{{ stock.purchasePrice | currency }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noStocks>
+    <p>No stocks in the portfolio yet. Add some stocks to get started!</p>
+  </ng-template>
+
+  <!-- Total Portfolio Value -->
+  <h3>Total Value: {{ totalValue | currency }}</h3>
+</div>
