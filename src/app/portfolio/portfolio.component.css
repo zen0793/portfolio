@@ -1,0 +1,31 @@
+form div {
+  margin-bottom: 10px;
+}
+
+.action-button {
+  margin-right: 10px;
+}
+
+.portfolio-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.portfolio-table th,
+.portfolio-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.portfolio-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* When you hover over the row, highlight it */
+.portfolio-table tr:hover {
+  background-color: #e9e9e9;
+}
+
